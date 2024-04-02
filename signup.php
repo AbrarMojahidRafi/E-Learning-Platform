@@ -27,21 +27,26 @@
 						$type = $_POST["flexRadioDefault"];
 					}
 				}
+				
 				$errors = Array();
+				// Checking that the user fillup all the fields or not. 
 				if (empty($name) OR empty($email) OR empty($password) OR empty($repeatPassword)){
 					array_push($errors,"All fields are required");
 				}
+				// Checking that users provided email is valid or not. 
 				if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 					array_push($errors, "Email is not valid");
 				}
-			    if (strlen($password)<8) {
-					array_push($errors,"Password must be at least 8 charactes long");
-			    }
-			    if ($password!==$repeatPassword) {
+				// Checking that the users provided password length is grather than 8 characters or not. 
+				if (strlen($password)<8) {
+					array_push($errors,"Password must be at least 8 characters long");
+				}
+				// Checking that the users typed the equal password or not, in the password and repeatPassword section. 
+				if ($password!==$repeatPassword) {
 					array_push($errors,"Password does not match");
-			    }
+				}
 				
-				if (count($errors) > 0){
+				if (count($errors) > 0){ // If error occurs, then showing that. 
 					foreach ($errors as  $error) {
 						echo "<div class='alert alert-danger' role='alert'> $error </div>";
 					}
