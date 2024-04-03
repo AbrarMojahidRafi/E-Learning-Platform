@@ -1,13 +1,16 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Signup</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-	<link href="style.css" rel = "stylesheet">
-  </head>
-  <body>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Signup</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+		<link href="style.css" rel = "stylesheet">
+	</head>
+  
+	<body>
+  
 		<div class="container"> 
 		
 		<?php
@@ -53,6 +56,7 @@
 				} else { // Means NO ERRORS occurs.. 
 					
 					// Now connect the Database.
+					require_once "database.php";  
 					
 					// Insert the name, email, password into the Database.
 					
@@ -87,16 +91,16 @@
 				<!-- Checkbox: Teacher or Student -->
 				<div class="form-group"> 
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Teacher">
-					  <label class="form-check-label" for="flexRadioDefault1">
+						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Teacher">
+						<label class="form-check-label" for="flexRadioDefault1">
 						Teacher
-					  </label>
+						</label>
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Student" checked>
-					  <label class="form-check-label" for="flexRadioDefault2">
+						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Student" checked>
+						<label class="form-check-label" for="flexRadioDefault2">
 						Student
-					  </label>
+						</label>
 					</div>
 				</div>
 				<!-- Submit Button -->
@@ -110,8 +114,9 @@
 			</div>
 			
 		</div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  </body>
+		
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+	</body>
 </html>
 
 
