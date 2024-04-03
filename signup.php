@@ -15,12 +15,13 @@
 		
 		<?php
 			// echo "<pre>";
-			// print_r($_POST);     // Array ( [firstName] => Abrar [lastName] => Rafi [email] => rafi.cse.bracu@gmail.com [password] => [repeat_password] => [submit] => Register )
+			// print_r($_POST);     // Array ( [firstName] => Abrar [lastName] => Rafi [email] => rafi.cse.bracu@gmail.com [password] => 123456789 [repeat_password] => 123456789 [flexRadioDefault] => Student [submit] => Register )
 			// echo "</pre>";
 			if (isset($_POST["submit"])){
 				$name = $_POST["firstName"]." ".$_POST["lastName"];
 				$email = $_POST["email"];
 				$password = $_POST["password"];
+				
 				$repeatPassword = $_POST["repeat_password"]; 
 				
 				if (isset($_POST['flexRadioDefault'])){ // Checking that any checkbox is checked or not.
@@ -54,14 +55,28 @@
 						echo "<div class='alert alert-danger' role='alert'> $error </div>";
 					}
 				} else { // Means NO ERRORS occurs.. 
-					
 					// Now connect the Database.
-					require_once "database.php";  
+					require_once('databaseConnection.php');
 					
-					// Insert the name, email, password into the Database.
+					// Checking whether the user has already an account or not. 
+					$sqlForEmail = "SELECT * FROM users EHERE Email=$email";
+					$PersonList = mysqli_query($conn, sqlForEmail); 
+					$numOfPerson = mysqli_num_rows(PersonList); 
+					if ($numOfPerson > 0){ // Person already created an account. 
+						echo "<div class='alert alert-danger' role='alert'> Email already exists! </div>";
+					} else{
+						// Insert the Name, Email, Password into the Database.
+						$sql = "INSERT INTO users (Name, Email, Password) VALUES ('$name', '$email', '$password')";
+
+						if (mysqli_query($conn, $sql)) {
+						  // Showing that the registration/insertion SUCCESSFULLY completed... 
+							echo "<div class='alert alert-success' role='alert'> SUCCESSFULLY Registered! </div>";
+						} else {
+							echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+						}
+					}
 					
-					// Showing that the registration/insertion SUCCESSFULLY completed... 
-					echo "<div class='alert alert-success' role='alert'> SUCCESSFULLY Registered! </div>";
+					
 				}
 			}
 		?>
