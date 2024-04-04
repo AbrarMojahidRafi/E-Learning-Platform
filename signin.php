@@ -20,8 +20,8 @@
 				$row_email = mysqli_query($conn, $sql_email); 
 				$row_password = mysqli_query($conn, $sql_password); 
 				if ((mysqli_num_rows($row_email) > 0) && (mysqli_num_rows($row_password) > 0)){
-					echo "Email and Password Match";
-					
+					// echo "Email and Password Match";
+					header('Location: homepage/index.php');
 				} else{ // Email or Password is not in the database. 
 					echo "<div class='alert alert-danger' role='alert'> Invalid Email or Password </div>";
 				}
