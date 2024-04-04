@@ -49,34 +49,29 @@
 				if ($password!==$repeatPassword) {
 					array_push($errors,"Password does not match");
 				}
-				
+				// Now connect the Database.
+				require_once('databaseConnection.php');
+				// Checking whether the user has already an account or not. 
+				$sql = "SELECT * FROM users WHERE Email = '$email'";
+				$rows = mysqli_query($conn, $sql); 
+				// echo mysqli_num_rows($rows);
+				if (mysqli_num_rows($rows) != 0){ // Person already created an account. 
+					array_push($errors,"Email already exists!");
+				}
 				if (count($errors) > 0){ // If error occurs, then showing that. 
 					foreach ($errors as  $error) {
 						echo "<div class='alert alert-danger' role='alert'> $error </div>";
 					}
 				} else { // Means NO ERRORS occurs.. 
-					// Now connect the Database.
-					require_once('databaseConnection.php');
-					
-					// Checking whether the user has already an account or not. 
-					$sqlForEmail = "SELECT * FROM users EHERE Email=$email";
-					$PersonList = mysqli_query($conn, sqlForEmail); 
-					$numOfPerson = mysqli_num_rows(PersonList); 
-					if ($numOfPerson > 0){ // Person already created an account. 
-						echo "<div class='alert alert-danger' role='alert'> Email already exists! </div>";
-					} else{
-						// Insert the Name, Email, Password into the Database.
-						$sql = "INSERT INTO users (Name, Email, Password) VALUES ('$name', '$email', '$password')";
+					// Insert the Name, Email, Password into the Database.
+					$sql = "INSERT INTO users (Name, Email, Password) VALUES ('$name', '$email', '$password')";
 
-						if (mysqli_query($conn, $sql)) {
-						  // Showing that the registration/insertion SUCCESSFULLY completed... 
-							echo "<div class='alert alert-success' role='alert'> SUCCESSFULLY Registered! </div>";
-						} else {
-							echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-						}
+					if (mysqli_query($conn, $sql)) {
+					  // Showing that the registration/insertion SUCCESSFULLY completed... 
+						echo "<div class='alert alert-success' role='alert'> SUCCESSFULLY Registered! </div>";
+					} else {
+						echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 					}
-					
-					
 				}
 			}
 		?>
