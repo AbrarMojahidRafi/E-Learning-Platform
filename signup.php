@@ -21,14 +21,13 @@
 				$name = $_POST["firstName"]." ".$_POST["lastName"];
 				$email = $_POST["email"];
 				$password = $_POST["password"];
-				
 				$repeatPassword = $_POST["repeat_password"]; 
 				
 				if (isset($_POST['flexRadioDefault'])){ // Checking that any checkbox is checked or not.
 					if ($_POST['flexRadioDefault'] == "Teacher"){ // It means -> Teacher checkbox clicked.
-						$type = $_POST["flexRadioDefault"];
+						$userType = $_POST["flexRadioDefault"];
 					} else{ // It means -> Student checkbox clicked.
-						$type = $_POST["flexRadioDefault"];
+						$userType = $_POST["flexRadioDefault"];
 					}
 				}
 				
@@ -64,8 +63,12 @@
 					}
 				} else { // Means NO ERRORS occurs.. 
 					// Insert the Name, Email, Password into the Database.
-					$sql = "INSERT INTO users (Name, Email, Password) VALUES ('$name', '$email', '$password')";
-
+					if ($userType === "Teacher"){ // Generating sql by checking user type. 
+						$sql = "INSERT INTO users (Name, Email, Password, TeacherType) VALUES ('$name', '$email', '$password', true)";
+					} else{
+						$sql = "INSERT INTO users (Name, Email, Password, StudentType) VALUES ('$name', '$email', '$password', true)";
+					}
+					
 					if (mysqli_query($conn, $sql)) {
 					  // Showing that the registration/insertion SUCCESSFULLY completed... 
 						echo "<div class='alert alert-success' role='alert'> SUCCESSFULLY Registered! </div>";
