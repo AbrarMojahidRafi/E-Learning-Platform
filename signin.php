@@ -21,7 +21,9 @@
 				$row_password = mysqli_query($conn, $sql_password); 
 				if ((mysqli_num_rows($row_email) > 0) && (mysqli_num_rows($row_password) > 0)){
 					// echo "Email and Password Match";
-					header('Location: homepage/index.php');
+					session_start(); 
+					$_SESSION['e'] = $email; 
+					header('Location: studentProfile.php');
 				} else{ // Email or Password is not in the database. 
 					echo "<div class='alert alert-danger' role='alert'> Invalid Email or Password </div>";
 				}
