@@ -43,7 +43,7 @@
 				echo "<h1> Email: ".$r['Email']."</h1>"; 
 				echo "<h3> Do you wanna change your email? <a href='changingEmail.php'>CLICK HERE</a></h3>";
 				
-				echo "<h3> Do you wanna change your Password? <a href='changinPassword.php'>CLICK HERE</a></h3>"; 
+				echo "<h3> Do you wanna change your Password? <a href='changingPassword.php'>CLICK HERE</a></h3>"; 
 				
 				echo "<hr>";
 				
