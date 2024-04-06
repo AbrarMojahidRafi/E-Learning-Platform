@@ -31,6 +31,9 @@
 		?>
 			<form action="signin.php" method="post">
 				<div class="form-group">
+					<h1>Signin Form</h1>
+				</div>
+				<div class="form-group">
 					<input type="email" placeholder="Enter Email:" name="email" class="form-control">
 				</div>
 				<div class="form-group">

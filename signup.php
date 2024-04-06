@@ -81,6 +81,9 @@
 		
 		<!-- Signup form -->
 			<form action="signup.php" method="post">
+				<div class="form-group">
+					<h1>Signup Form</h1>
+				</div>
 				<!-- First Name section -->
 				<div class="form-group"> 
 					<input type="text" class="form-control" placeholder="First name" aria-label="First name" name="firstName">
