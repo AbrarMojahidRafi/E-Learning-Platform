@@ -7,7 +7,7 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 		<style>
 			#logoutButtonID{
-				color: #0060B6;
+				color: #000000;
 				text-decoration: none;
 			}
 
@@ -59,9 +59,9 @@
 				
 				echo "<hr>";
 				
-				echo "<h1><a href='https://www.w3schools.com'>My Course List</a></h1>";
+				echo "<h1><a href='7_myCourses.php'>My Course List</a></h1>";
 				
-				echo "<h1><a href='https://www.w3schools.com'>ALL COURSES</a></h1>";
+				echo "<h1><a href='8_allCourses.php'>ALL COURSES</a></h1>";
 				
 			}
 		?>
