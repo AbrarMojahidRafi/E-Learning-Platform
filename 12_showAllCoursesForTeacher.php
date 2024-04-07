@@ -24,11 +24,11 @@
 	<!--Navigation Bar-->
 		<nav class="navbar navbar-expand-lg bg-body-tertiary">
 		  <div class="container-fluid">
-			<a class="navbar-brand" href="3_studentProfile.php">E Learning Platform</a>
+			<a class="navbar-brand" href="9_teacherProfile.php">E Learning Platform</a>
 				<div class="collapse navbar-collapse" id="navbarNavDropdown">
 				  <ul class="navbar-nav">
 					<li class="nav-item">
-					  <a class="nav-link active" aria-current="page" href="3_studentProfile.php">Profile</a>
+					  <a class="nav-link active" aria-current="page" href="9_teacherProfile.php">Teacher Profile</a>
 					</li>
 				  </ul>
 				</div>
