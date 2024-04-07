@@ -16,7 +16,7 @@
 				margin-bottom:30px;
 			}
 			#logoutButtonID{
-				color: #0060B6;
+				color: #000000;
 				text-decoration: none;
 			}
 
