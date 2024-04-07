@@ -37,7 +37,7 @@
 				<div class="collapse navbar-collapse" id="navbarNavDropdown">
 				  <ul class="navbar-nav">
 					<li class="nav-item">
-					  <a class="nav-link active" aria-current="page" href="3_studentProfile.php">Profile</a>
+					  <a class="nav-link active" aria-current="page" href="3_studentProfile.php">Student Profile</a>
 					</li>
 				  </ul>
 				</div>
