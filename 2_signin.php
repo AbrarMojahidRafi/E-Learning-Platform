@@ -19,11 +19,23 @@
 				$sql_password = "SELECT Password FROM users WHERE Password='$password'";
 				$row_email = mysqli_query($conn, $sql_email); 
 				$row_password = mysqli_query($conn, $sql_password); 
-				if ((mysqli_num_rows($row_email) > 0) && (mysqli_num_rows($row_password) > 0)){
-					// echo "Email and Password Match";
-					session_start(); 
-					$_SESSION['e'] = $email; 
-					header('Location: 3_studentProfile.php');
+				if ((mysqli_num_rows($row_email) > 0) && (mysqli_num_rows($row_password) > 0)){    // echo "Email and Password Match";
+					// Checking that the user is teacher or student. 
+					$query = "SELECT TeacherType, StudentType FROM users where Email='$email'";
+					$query_row = mysqli_query($conn, $query); 
+					if (mysqli_num_rows($query_row) > 0){
+						while ($r=mysqli_fetch_array($query_row)){
+							if ($r['TeacherType']){    // if user is a teacher, then go 9_teacherProfile.php
+								session_start(); 
+								$_SESSION['e'] = $email; 
+								header('Location: 9_teacherProfile.php');
+							} else if ($r['StudentType']){    // if user is a teacher, then go 3_studentProfile.php
+								session_start(); 
+								$_SESSION['e'] = $email; 
+								header('Location: 3_studentProfile.php');
+							}
+						}
+					}
 				} else{ // Email or Password is not in the database. 
 					echo "<div class='alert alert-danger' role='alert'> Invalid Email or Password </div>";
 				}
