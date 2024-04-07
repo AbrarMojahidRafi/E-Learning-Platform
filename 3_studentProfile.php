@@ -28,7 +28,7 @@
 				<div class="collapse navbar-collapse" id="navbarNavDropdown">
 				  <ul class="navbar-nav">
 					<li class="nav-item">
-					  <a class="nav-link active" aria-current="page" href="3_studentProfile.php">Profile</a>
+					  <a class="nav-link active" aria-current="page" href="3_studentProfile.php"> Student Profile</a>
 					</li>
 				  </ul>
 				</div>
@@ -59,9 +59,9 @@
 				
 				echo "<hr>";
 				
-				echo "<h1><a href='7_myCourses.php'>My Course List</a></h1>";
+				echo "<h1><a href='7_myCourses.php'>Enrolled Course</a></h1>";
 				
-				echo "<h1><a href='8_allCourses.php'>ALL COURSES</a></h1>";
+				echo "<h1><a href='8_showAllCourses.php' class='text-success'>SHOW ALL COURSES</a></h1>";
 				
 			}
 		?>
