@@ -59,7 +59,7 @@
 				
 				echo "<hr>";
 				
-				echo "<h1><a href='7_myCourses.php'>Provided Course</a></h1>";
+				echo "<h1><a href='13_providedCourses.php'>Provided Course</a></h1>";
 				
 				echo "<h1><a href='12_showAllCoursesForTeacher.php' class='text-success'>SHOW ALL COURSES</a></h1>";
 				
