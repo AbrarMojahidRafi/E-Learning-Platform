@@ -33,23 +33,18 @@
 	<!--Navigation Bar-->
 		<nav class="navbar navbar-expand-lg bg-body-tertiary">
 		  <div class="container-fluid">
-			<a class="navbar-brand" href="studentProfile.php">E Learning Platform</a>
+			<a class="navbar-brand" href="3_studentProfile.php">E Learning Platform</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			  <span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			  <ul class="navbar-nav">
 				<li class="nav-item">
-				  <a class="nav-link active" aria-current="page" href="studentProfile.php">Profile</a>
+				  <a class="nav-link active" aria-current="page" href="3_studentProfile.php">Profile</a>
 				</li>
 			  </ul>
 			</div>
-			<form action="changingPassword.php">
-				<?php 
-					
-				?>
-				<button type="button" class="btn btn-outline-dark" name='logout_button'> <a href='logout.php' id="logoutButtonID">Logout</a> </button>
-			</form>
+			<button type="button" class="btn btn-outline-dark" name='logout_button'> <a href='6_logout.php' id="logoutButtonID">Logout</a> </button>
 		  </div>
 		</nav>
 		
@@ -63,7 +58,7 @@
 					$oldPassword = $_POST['password_old'];
 					$newPassword = $_POST['password_new']; 
 					$retypePassword = $_POST['retype_new_password']; 
-					require_once "databaseConnection.php";
+					require_once "0_databaseConnection.php";
 					
 					// Is database's password Matches with the user's typed password. 
 					$errors = Array();
@@ -100,7 +95,7 @@
 			?>
 			
 			
-			<form action="changingPassword.php" method="post">
+			<form action="5_changingPassword.php" method="post">
 				<div class="form-group">
 					<h1>Password Changing form!</h1>
 				</div>

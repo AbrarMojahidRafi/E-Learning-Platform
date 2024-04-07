@@ -24,23 +24,18 @@
 	<!--Navigation Bar-->
 		<nav class="navbar navbar-expand-lg bg-body-tertiary">
 		  <div class="container-fluid">
-			<a class="navbar-brand" href="studentProfile.php">E Learning Platform</a>
+			<a class="navbar-brand" href="3_studentProfile.php">E Learning Platform</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			  <span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			  <ul class="navbar-nav">
 				<li class="nav-item">
-				  <a class="nav-link active" aria-current="page" href="studentProfile.php">Profile</a>
+				  <a class="nav-link active" aria-current="page" href="3_studentProfile.php">Profile</a>
 				</li>
 			  </ul>
 			</div>
-			<form action="changingPassword.php">
-				<?php 
-					
-				?>
-				<button type="button" class="btn btn-outline-dark" name='logout_button'> <a href='logout.php' id="logoutButtonID">Logout</a> </button>
-			</form>
+			<button type="button" class="btn btn-outline-dark" name='logout_button'> <a href='6_logout.php' id="logoutButtonID">Logout</a> </button>
 		  </div>
 		</nav>
 		
@@ -50,7 +45,7 @@
 			$em = $_SESSION['e'];
 			// echo $em;
 			//connecting the database. 
-			require_once "databaseConnection.php"; 
+			require_once "0_databaseConnection.php"; 
 			$sql_email = "SELECT * FROM users WHERE Email='$em'";
 			$row = mysqli_query($conn, $sql_email); 
 			// Fetching the data from database. 
@@ -61,9 +56,9 @@
 				echo "<h1> ID: ".$r['ID']."</h1>";  
 				
 				echo "<h1> Email: ".$r['Email']."</h1>"; 
-				echo "<h3> Do you wanna change your email? <a href='changingEmail.php'>CLICK HERE</a></h3>";
+				echo "<h3> Do you wanna change your email? <a href='4_changingEmail.php'>CLICK HERE</a></h3>";
 				
-				echo "<h3> Do you wanna change your Password? <a href='changingPassword.php'>CLICK HERE</a></h3>"; 
+				echo "<h3> Do you wanna change your Password? <a href='5_changingPassword.php'>CLICK HERE</a></h3>"; 
 				
 				echo "<hr>";
 				

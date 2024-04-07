@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Signup</title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-		<link href="style.css" rel = "stylesheet">
+		<link href="0_style.css" rel = "stylesheet">
 	</head>
   
 	<body>
@@ -49,7 +49,7 @@
 					array_push($errors,"Password does not match");
 				}
 				// Now connect the Database.
-				require_once('databaseConnection.php');
+				require_once('0_databaseConnection.php');
 				// Checking whether the user has already an account or not. 
 				$sql = "SELECT * FROM users WHERE Email = '$email'";
 				$rows = mysqli_query($conn, $sql); 
@@ -80,7 +80,7 @@
 		?>
 		
 		<!-- Signup form -->
-			<form action="signup.php" method="post">
+			<form action="1_signup.php" method="post">
 				<div class="form-group">
 					<h1>Signup Form</h1>
 				</div>
@@ -126,7 +126,7 @@
 			</form>
 			
 			<div>
-				<div><p>Already Registered <a href="signin.php">Sign in Here</a></p></div>
+				<div><p>Already Registered <a href="2_signin.php">Sign in Here</a></p></div>
 			</div>
 			
 		</div>

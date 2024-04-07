@@ -33,23 +33,18 @@
 	<!--Navigation Bar-->
 		<nav class="navbar navbar-expand-lg bg-body-tertiary">
 		  <div class="container-fluid">
-			<a class="navbar-brand" href="studentProfile.php">E Learning Platform</a>
+			<a class="navbar-brand" href="3_studentProfile.php">E Learning Platform</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			  <span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			  <ul class="navbar-nav">
 				<li class="nav-item">
-				  <a class="nav-link active" aria-current="page" href="studentProfile.php">Profile</a>
+				  <a class="nav-link active" aria-current="page" href="3_studentProfile.php">Profile</a>
 				</li>
 			  </ul>
 			</div>
-			<form action="changingPassword.php">
-				<?php 
-					
-				?>
-				<button type="button" class="btn btn-outline-dark" name='logout_button'> <a href='logout.php' id="logoutButtonID">Logout</a> </button>
-			</form>
+			<button type="button" class="btn btn-outline-dark" name='logout_button'> <a href='6_logout.php' id="logoutButtonID">Logout</a> </button>
 		  </div>
 		</nav>
 		
@@ -64,7 +59,7 @@
 				$newEmail = $_POST["email_new"]; 
 				$password_typed = $_POST["typed_password"]; 
 				// Connecting with the database. 
-				require_once "databaseConnection.php"; 
+				require_once "0_databaseConnection.php"; 
 				// IS the oldEmail and password_typed matches with the databse's email and password?
 				$sql_email = "SELECT Email FROM users WHERE Email='$oldEmail'"; 
 				$row_email = mysqli_query($conn, $sql_email); 
@@ -90,7 +85,7 @@
 		
 		
 		<div class="container"> 
-			<form action="changingEmail.php" method="post">
+			<form action="4_changingEmail.php" method="post">
 				<div class="form-group">
 					<h1>Email Changing form!</h1>
 				</div>
