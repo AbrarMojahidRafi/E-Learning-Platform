@@ -15,6 +15,16 @@
 			.form-group{
 				margin-bottom:30px;
 			}
+			#logoutButtonID{
+				color: #0060B6;
+				text-decoration: none;
+			}
+
+			#logoutButtonID:hover {
+				color:#FFFFFF; 
+				text-decoration:none; 
+				cursor:pointer;  
+			}
 		</style>
 	</head>
 	<body>
@@ -34,6 +44,12 @@
 				</li>
 			  </ul>
 			</div>
+			<form action="changingPassword.php">
+				<?php 
+					
+				?>
+				<button type="button" class="btn btn-outline-dark" name='logout_button'> <a href='logout.php' id="logoutButtonID">Logout</a> </button>
+			</form>
 		  </div>
 		</nav>
 		
