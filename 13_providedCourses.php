@@ -38,8 +38,15 @@
 		
 		
 		<h1 class="text-center">My Provided Course.</h1>
-	
 		
+		<h3>Wanna to Add Your Course? <a href="14_addCourse.php">CLICK HERE.</a></h3>
+		
+		
+		<?php 
+			// If teacher add any course, then this section will execute. Otherwise no courses will be shown. 
+			// require_once "0_databaseConnection.php"; 
+			// $query = "SELECT * FROM courses where ID_CourseProvider=''"
+		?>
 		
 		<div class="card" style="width: 18rem;">
 		  <img src="..." class="card-img-top" alt="Course Image">
@@ -49,6 +56,7 @@
 			<a href="#" class="btn btn-primary">Purchase</a>
 		  </div>
 		</div>
+		
 		
 		
 		<!-- Optional JavaScript -->
