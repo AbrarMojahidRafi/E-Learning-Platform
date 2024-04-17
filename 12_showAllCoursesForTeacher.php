@@ -49,11 +49,12 @@
 							<div class="card-body">
 								<h5 class="card-title">'.$r["CourseCode"].'</h5>
 								<h3 class="card-title">'.$r["CourseTitle"].'</h3>
-								<p class="card-text">'.$r["CourseDescription"].'</p>
-								<a href="..." class="btn btn-primary">Video Link</a>
-								<a href="..." class="btn btn-primary">Purchase</a>
+								<p class="card-text">'.$r["CourseDescription"].'</p>'.
+								'<a href="'.$r["CourseVideo"].'" class="btn btn-primary">Video Link</a>
+								<a href="https://www.google.com/" class="btn btn-primary">Purchase</a>
 							</div>
-						</div>';
+						</div>
+						<br>';
 			}
 	
 		?>
