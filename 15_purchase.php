@@ -73,7 +73,7 @@
 						$sql = "INSERT INTO purchasers (PurchasersID, PurchasersName, PurchasersEmail, PurchasersCourseCode, Card) VALUES ('$purchaser_id', '$purchaser_name', '$purchaser_email', '$purchaser_course', '$purchaser_payment_option_number')";
 					} 
 					
-					if (mysqli_query($conn, $sql)) {   // not working, fix it............
+					if (mysqli_query($conn, $sql)) { 
 						echo "<div class='alert alert-success' role='alert'> SUCCESSFULLY Purchased!</div>";
 					} else {
 						echo "Error: " . $sql . "<br>" . mysqli_error($conn);
