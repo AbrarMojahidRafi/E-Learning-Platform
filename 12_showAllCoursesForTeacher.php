@@ -51,7 +51,7 @@
 								<h3 class="card-title">'.$r["CourseTitle"].'</h3>
 								<p class="card-text">'.$r["CourseDescription"].'</p>'.
 								'<a href="'.$r["CourseVideo"].'" class="btn btn-primary">Video Link</a>
-								<a href="https://www.google.com/" class="btn btn-primary">Purchase</a>
+								<a href="15_purchase.php" class="btn btn-primary">Purchase</a>
 							</div>
 						</div>
 						<br>';

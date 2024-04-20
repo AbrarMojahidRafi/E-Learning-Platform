@@ -38,17 +38,26 @@
 		
 		
 		<h1 class="text-center">All Course List.</h1>
+		
+		<?php 
+			require_once('0_databaseConnection.php'); 
+			$query = "SELECT * FROM courses"; 
+			$row = mysqli_query($conn, $query); 
+			// Fetching the data from database. 
+			while ($r = mysqli_fetch_array($row)){
+				echo '<div class="card" style="width: 18rem;">
+							<div class="card-body">
+								<h5 class="card-title">'.$r["CourseCode"].'</h5>
+								<h3 class="card-title">'.$r["CourseTitle"].'</h3>
+								<p class="card-text">'.$r["CourseDescription"].'</p>'.
+								'<a href="'.$r["CourseVideo"].'" class="btn btn-primary">Video Link</a>
+								<a href="15_purchase.php" class="btn btn-primary">Purchase</a>
+							</div>
+						</div>
+						<br>';
+			}
 	
-		
-		
-		<div class="card" style="width: 18rem;">
-		  <img src="..." class="card-img-top" alt="Course Image">
-		  <div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-			<a href="#" class="btn btn-primary">Purchase</a>
-		  </div>
-		</div>
+		?>
 		
 		
 		<!-- Optional JavaScript -->
