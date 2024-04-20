@@ -39,6 +39,33 @@
 		
 		<h1 class="text-center">My Enrolled Course.</h1>
 	
+		<?php 
+			require_once('0_databaseConnection.php'); 
+			session_start(); 
+			$em = $_SESSION['e'];
+			$id_query = "SELECT * FROM users WHERE Email='$em'"; 
+			$id_row = mysqli_query($conn, $id_query); 
+			while ($r = mysqli_fetch_array($id_row)){
+				$id = $r["ID"];  // id stored. 
+			}  
+			
+			// working onnnnnn........................
+			$query = "SELECT * FROM purchasers where PurchasersID ='$id'"; 
+			$row = mysqli_query($conn, $query); 
+			// Fetching the data from database. 
+			while ($r = mysqli_fetch_array($row)){
+				echo '<div class="card" style="width: 18rem;">
+							<div class="card-body">
+								<h5 class="card-title">'.$r["CourseCode"].'</h5>
+								<h3 class="card-title">'.$r["CourseTitle"].'</h3>
+								<p class="card-text">'.$r["CourseDescription"].'</p>'.
+								'<a href="'.$r["CourseVideo"].'" class="btn btn-primary">Video Link</a>
+								<a href="15_purchase.php" class="btn btn-primary">Purchase</a>
+							</div>
+						</div>
+						<br>';
+			}
+		?>
 		
 		
 		<div class="card" style="width: 18rem;">
