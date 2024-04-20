@@ -28,29 +28,57 @@
 		</style>
 	</head>
 	<body>
-								
-		<!--Navigation Bar-->
-		<nav class="navbar navbar-expand-lg bg-body-tertiary">
-		  <div class="container-fluid">
-			<a class="navbar-brand" href="9_teacherProfile.php">E Learning Platform</a>
-				<div class="collapse navbar-collapse" id="navbarNavDropdown">
-				  <ul class="navbar-nav">
-					<li class="nav-item">
-					  <a class="nav-link active" aria-current="page" href="9_teacherProfile.php">Teacher Profile</a>
-					</li>
-				  </ul>
-				</div>
-			<button type="button" class="btn btn-outline-dark" name='logout_button'> <a href='6_logout.php' id="logoutButtonID">Logout</a> </button>
-		  </div>
-		</nav>
+		
+		
 		<div class="container">
 		
 			<?php
 				session_start(); 
 				$em = $_SESSION['e'];
 				// echo $em;
+				require_once "0_databaseConnection.php"; 
+				$id_query = "SELECT * FROM users WHERE Email='$em'"; 
+				$id_row = mysqli_query($conn, $id_query); 
+				while ($r = mysqli_fetch_array($id_row)){
+					$id = $r["ID"];  // id stored. 
+					$teacher_type = $r["TeacherType"];  // TeacherType stored. 
+					$student_type = $r["StudentType"];  // StudentType stored. 
+				}  
+				if (isset($_POST['cancel'])){
+					// echo "Cancel Clicked"; 
+					if ($teacher_type){
+						// echo "go teacher file"; 
+						header('Location: 9_teacherProfile.php');
+					} else{
+						// echo "go student file";
+						header('Location: 3_studentProfile.php');
+					}
+				} 
 				
-				
+				if (isset($_POST['purchase'])){
+					// echo "Purchase Clicked"; 
+					// print_r($_POST);     // Array ( [name] => ABRAR MOJAHID RAFI [user_id] => 40 [email] => rafi.cse.bracu@gmail.com [selected_course] => CSE111-42 [payment_option] => mobile_banking [payment_option_number] => [purchase] => Purchase )
+					
+					$purchaser_name = $_POST['name'];
+					$purchaser_id = $_POST['user_id']; 
+					$purchaser_email = $_POST['email']; 
+					$purchaser_course = $_POST['selected_course']; 
+					$purchaser_payment_option = $_POST['payment_option']; 
+					$purchaser_payment_option_number = $_POST['payment_option_number']; 
+					if ($purchaser_payment_option == 'cash'){
+						$sql = "INSERT INTO purchasers (PurchasersID, PurchasersName, PurchasersEmail, PurchasersCourseCode, Cash) VALUES ('$purchaser_id', '$purchaser_name', '$purchaser_email', '$purchaser_course', true)";
+					} else if ($purchaser_payment_option == 'mobile_banking'){
+						$sql = "INSERT INTO purchasers (PurchasersID, PurchasersName, PurchasersEmail, PurchasersCourseCode, MobileBanking) VALUES ('$purchaser_id', '$purchaser_name', '$purchaser_email', '$purchaser_course', '$purchaser_payment_option_number')";
+					} else if ($purchaser_payment_option == 'card') {
+						$sql = "INSERT INTO purchasers (PurchasersID, PurchasersName, PurchasersEmail, PurchasersCourseCode, Card) VALUES ('$purchaser_id', '$purchaser_name', '$purchaser_email', '$purchaser_course', '$purchaser_payment_option_number')";
+					} 
+					
+					if (mysqli_query($conn, $sql)) {   // not working, fix it............
+						echo "<div class='alert alert-success' role='alert'> SUCCESSFULLY Purchased!</div>";
+					} else {
+						echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+					}
+				} 
 			?>
 			
 			<form action="15_purchase.php" method="post">
@@ -67,28 +95,48 @@
 					<input type="email" placeholder="Enter Your Email:" name="email" class="form-control">
 				</div>
 				
-				
-				<div class="input-group mb-3">
-				  <label class="input-group-text" for="inputGroupSelect01">Course Code</label>
-				  <select class="form-select" id="inputGroupSelect01">
-					<option selected>Choose...</option>
-					<?php
-						require_once('0_databaseConnection.php');
-						$query = "SELECT CourseCode, CourseTitle FROM courses"; 
-						$row = mysqli_query($conn, $query); 
-						while ($r = mysqli_fetch_array($row)){
-							$cc = $r['CourseCode']; 
-							$ct = $r['CourseTitle']; 
-							echo '<option value="$cc">'.$cc.' - '.$ct.'</option>';
-						}
-						
-					?>
-				  </select>
+				<div class="form-group">
+					<div class="input-group mb-3">
+					  <label class="input-group-text" for="inputGroupSelect01">Course Code</label>
+					  <select class="form-select" id="inputGroupSelect01" name="selected_course">
+						<option selected>Choose...</option>
+						<?php
+							$query = "SELECT CourseCode, CourseTitle, ID_CourseProvider FROM courses"; 
+							$row = mysqli_query($conn, $query); 
+							while ($r = mysqli_fetch_array($row)){
+								$cc = $r['CourseCode']; 
+								$ct = $r['CourseTitle']; 
+								$course_provider_id = $r['ID_CourseProvider'];
+								echo "<option value=\"$cc-$course_provider_id\">$cc - $ct</option>";
+							}
+						?>
+					  </select>
+					</div>
 				</div>
 				
+				<div class="form-group">
+					<div class="input-group mb-3">
+					  <label class="input-group-text" for="inputGroupSelect02">Payment Option</label>
+					  <select class="form-select" id="inputGroupSelect02" name="payment_option">
+						<option selected>Choose...</option>
+						<option value="cash">Cash</option>
+						<option value="mobile_banking">Mobile Banking</option>
+						<option value="card">Card </option>
+					  </select>
+					  <input type="text" placeholder="Bkash/Card:" name="payment_option_number" class="form-control">
+					</div>
+				</div>
 				
-				<div class="form-btn">
-					<input type="submit" class="btn btn-primary" value="Purchase" name="purchase">
+				<div class="form-group">
+					<div class="form-btn">
+						<input type="submit" class="btn btn-primary" value="Purchase" name="purchase">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="form-btn">
+						<input type="submit" class="btn btn-primary" value="Cancel" name="cancel">
+					</div>
 				</div>
 			</form>
 		</div>
