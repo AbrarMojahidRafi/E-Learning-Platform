@@ -54,28 +54,44 @@
 			$row = mysqli_query($conn, $query); 
 			// Fetching the data from database. 
 			while ($r = mysqli_fetch_array($row)){
-				echo '<div class="card" style="width: 18rem;">
-							<div class="card-body">
-								<h5 class="card-title">'.$r["CourseCode"].'</h5>
-								<h3 class="card-title">'.$r["CourseTitle"].'</h3>
-								<p class="card-text">'.$r["CourseDescription"].'</p>'.
-								'<a href="'.$r["CourseVideo"].'" class="btn btn-primary">Video Link</a>
-								<a href="15_purchase.php" class="btn btn-primary">Purchase</a>
+				$purchaser_course_code = $r['PurchasersCourseCode']; 
+				$flag = false; 
+				$cc = "";
+				$course_provider_id = "";
+				for($i = 0; $i < strlen($purchaser_course_code); $i++){
+					if ($purchaser_course_code[$i] == "-"){
+						$flag = true; 
+						continue;
+					}
+					if ($flag == false){
+						$cc .= $purchaser_course_code[$i]; 
+					} else{
+						$course_provider_id .= $purchaser_course_code[$i]; 
+					}
+				}
+				/*
+				echo $cc;
+				echo "------";
+				echo $course_provider_id;
+				*/
+				$query_for_selecting_card = "SELECT * FROM courses WHERE CourseCode='$cc' AND ID_CourseProvider='$course_provider_id'";
+				$row_for_selecting_card = mysqli_query($conn, $query_for_selecting_card ); 
+				// echo "working";
+				while ($r = mysqli_fetch_array($row_for_selecting_card)){
+					echo '<div class="card" style="width: 18rem;">
+								<div class="card-body">
+									<h5 class="card-title">'.$r["CourseCode"].'</h5>
+									<h3 class="card-title">'.$r["CourseTitle"].'</h3>
+									<p class="card-text">'.$r["CourseDescription"].'</p>'.
+									'<a href="'.$r["CourseVideo"].'" class="btn btn-primary">Video Link</a>
+									<a href="15_purchase.php" class="btn btn-primary">Purchase</a>
+								</div>
 							</div>
-						</div>
-						<br>';
+							<br>';
+				}
+				
 			}
 		?>
-		
-		
-		<div class="card" style="width: 18rem;">
-		  <img src="..." class="card-img-top" alt="Course Image">
-		  <div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-			<a href="#" class="btn btn-primary">Purchase</a>
-		  </div>
-		</div>
 		
 		
 		<!-- Optional JavaScript -->
