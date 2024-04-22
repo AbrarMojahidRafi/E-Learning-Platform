@@ -49,12 +49,14 @@
 				$id = $r["ID"];  // id stored. 
 			}  
 			
-			// working onnnnnn........................
 			$query = "SELECT * FROM purchasers where PurchasersID ='$id'"; 
 			$row = mysqli_query($conn, $query); 
 			// Fetching the data from database. 
-			while ($r = mysqli_fetch_array($row)){
-				$purchaser_course_code = $r['PurchasersCourseCode']; 
+			while ($r_purchase = mysqli_fetch_array($row)){
+				$purchaser_course_code = $r_purchase['PurchasersCourseCode']; 
+				$purchase_number = $r_purchase['PurchaseNumber'];
+				$purchaser_name = $r_purchase['PurchasersName']; 
+				$purchaser_email = $r_purchase['PurchasersEmail']; 
 				$flag = false; 
 				$cc = "";
 				$course_provider_id = "";
@@ -77,14 +79,29 @@
 				$query_for_selecting_card = "SELECT * FROM courses WHERE CourseCode='$cc' AND ID_CourseProvider='$course_provider_id'";
 				$row_for_selecting_card = mysqli_query($conn, $query_for_selecting_card ); 
 				// echo "working";
+				$_SESSION['$course_purchase_number_using_session'] = $purchase_number;
 				while ($r = mysqli_fetch_array($row_for_selecting_card)){
-					echo '<div class="card" style="width: 18rem;">
+					echo '<div class="card" style="width: 25rem;">
 								<div class="card-body">
 									<h5 class="card-title">'.$r["CourseCode"].'</h5>
 									<h3 class="card-title">'.$r["CourseTitle"].'</h3>
 									<p class="card-text">'.$r["CourseDescription"].'</p>'.
 									'<a href="'.$r["CourseVideo"].'" class="btn btn-primary">Video Link</a>
-									<a href="15_purchase.php" class="btn btn-primary">Purchase</a>
+									<br>
+									<br>
+									<p class="text-muted">
+									  Purchasing Details: 
+									  <br>
+									  Purchase Number: '.$purchase_number.'
+									  <br>
+									  Purchaser ID: '.$id.'
+									  <br>
+									  Purchaser Name: '.$purchaser_name.'
+									  <br>
+									  Purchaser Email '.$purchaser_email.' 
+									  <br>
+									  <a href="16_commentsOfStudents.php" class="text-reset">Comment</a>.
+									</p>
 								</div>
 							</div>
 							<br>';
