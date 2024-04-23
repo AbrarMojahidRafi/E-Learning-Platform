@@ -38,7 +38,10 @@
 		
 		
 		<h1 class="text-center">My Enrolled Course.</h1>
-	
+		
+		<a href="16_commentsOfStudents.php" class="btn btn-info">Comment</a>
+			
+
 		<?php 
 			require_once('0_databaseConnection.php'); 
 			session_start(); 
@@ -100,7 +103,6 @@
 									  <br>
 									  Purchaser Email '.$purchaser_email.' 
 									  <br>
-									  <a href="16_commentsOfStudents.php" class="text-reset">Comment</a>.
 									</p>
 								</div>
 							</div>
