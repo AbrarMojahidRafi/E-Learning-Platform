@@ -40,7 +40,6 @@
 		<h1 class="text-center">My Enrolled Course.</h1>
 		
 		<a href="16_commentsOfStudents.php" class="btn btn-info">Comment</a>
-			
 
 		<?php 
 			require_once('0_databaseConnection.php'); 
@@ -82,7 +81,6 @@
 				$query_for_selecting_card = "SELECT * FROM courses WHERE CourseCode='$cc' AND ID_CourseProvider='$course_provider_id'";
 				$row_for_selecting_card = mysqli_query($conn, $query_for_selecting_card ); 
 				// echo "working";
-				$_SESSION['$course_purchase_number_using_session'] = $purchase_number;
 				while ($r = mysqli_fetch_array($row_for_selecting_card)){
 					echo '<div class="card" style="width: 25rem;">
 								<div class="card-body">
