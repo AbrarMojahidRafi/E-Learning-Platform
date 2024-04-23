@@ -63,6 +63,11 @@
 				
 				echo "<h1><a href='8_showAllCourses.php' class='text-success'>SHOW ALL COURSES</a></h1>";
 				
+				echo "<h1><a href='18_showAllComments.php' class='text-info'>SHOW ALL COMMENTS</a></h1>";
+
+				echo "<hr>";
+				
+				echo "<h1><a href='19_deleteOption.php' class='text-danger'>Delete Account</a></h1>";
 			}
 		?>
 
