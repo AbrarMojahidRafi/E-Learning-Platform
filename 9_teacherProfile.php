@@ -59,13 +59,13 @@
 				
 				echo "<hr>";
 				
-				echo "<h1><a href='13_providedCourses.php'>Provided Course</a></h1>";
+				echo "<h2><a href='13_providedCourses.php'>Provided Course</a> -> Wanna to DELETE some PROVIDED COURSE? <a href='20_deleteProvidedCourseForTeacher.php' class='text-danger'>Click Here</a></h2>";
 				
-				echo "<h1><a href='17_teacherPurchasedCourses.php'>Purchased Course</a></h1>";
+				echo "<h2><a href='17_teacherPurchasedCourses.php'>Purchased Course</a> -> Wanna to DELETE some Purchased COURSE? <a href='21_deletePurchasedCourse.php' class='text-danger'>Click Here</a></h2>";
 				
-				echo "<h1><a href='12_showAllCoursesForTeacher.php' class='text-success'>SHOW ALL COURSES</a></h1>";
+				echo "<h2><a href='12_showAllCoursesForTeacher.php' class='text-success'>SHOW ALL COURSES</a></h2>";
 				
-				echo "<h1><a href='18_showAllComments.php' class='text-info'>SHOW ALL COMMENTS</a></h1>";
+				echo "<h2><a href='18_showAllComments.php' class='text-info'>SHOW ALL COMMENTS</a></h2>";
 				
 				echo "<hr>";
 				
