@@ -6,4 +6,3 @@
 - CSS, Bootstrap
 - PHP
 - MySQL
-- JavaScript
