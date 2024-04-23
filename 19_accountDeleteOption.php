@@ -51,7 +51,7 @@
 			}
 		} 
 	?>
-	<form action="19_deleteOption.php" method="post">
+	<form action="19_accountDeleteOption.php" method="post">
 		<div class="form-group">
 			<div class="form-btn">
 				<input type="submit" class="btn btn-primary" value="Cancel" name="cancel">
@@ -85,7 +85,7 @@
 			}
 		}
 	?>
-		<form action="19_deleteOption.php" method="post">
+		<form action="19_accountDeleteOption.php" method="post">
 			<div class="form-group">
 				<h1>Deleting Account Form</h1>
 			</div>

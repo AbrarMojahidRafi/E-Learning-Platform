@@ -69,7 +69,7 @@
 				
 				echo "<hr>";
 				
-				echo "<h1><a href='19_deleteOption.php' class='text-danger'>Delete Account</a></h1>";
+				echo "<h1><a href='19_accountDeleteOption.php' class='text-danger'>Delete Account</a></h1>";
 			}
 		?>
 
